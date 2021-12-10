@@ -1,26 +1,31 @@
-import Project.JenisLaundry;
-import Project.Login;
-import Project.Pegawai;
-import Exception.excepNote;
-import Project.Transaksi;
+import Project.*;
 
-import java.sql.ResultSet;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
-    static Pegawai diLaundry;
+    static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
         try {
-            diLaundry = new Pegawai();
-            System.out.println("Berhasil Terhubung!");
-            System.out.println("======================================================");
+            System.out.println("Berhasil Terhubung!\n");
             menudiLaundryApp();
         } catch (SQLException exception) {
-            exception.printStackTrace();
+            System.out.println("ERROR: " + exception.getMessage());
         }
 
+    }
+
+    public static void kembaliKeMenu() throws SQLException {
+        System.out.println("\n--------------------------");
+        System.out.println("Tekan Enter Untuk Kembali!");
+        try {
+            System.in.read();
+            menudiLaundryApp();
+        } catch (IOException e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
     }
 
     public static void LogindiLaundry() throws SQLException {
@@ -37,26 +42,32 @@ public class Main {
     }
 
     public static void menudiLaundryApp() throws SQLException {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("======== SELAMAT DATANG DI APLIKASI DILAUNDRY ========");
+        System.out.println("\033[H\033[2J");
+        System.out.flush();
+        System.out.println("======================================================");
+        System.out.println("-------- SELAMAT DATANG DI APLIKASI DILAUNDRY --------");
         System.out.println("======================================================");
         System.out.print("Menu: \n1. Buat Data Laundry Baru \n2. Lihat Riwayat Data Laundry \n3. Hapus Data Laundry \n0. Keluar \nPILIHAN ANDA>> ");
         Integer menu = scan.nextInt();
         switch (menu) {
             case 0:
+                System.out.println("------------------");
+                System.out.println("Anda telah Keluar!");
+                System.out.println("------------------");
                 System.exit(0);
                 break;
             case 1:
                 menuBuatDataLaundry();
-                break;
+                kembaliKeMenu();
             case 2:
-//                menuLihatDataLaundry();
-                break;
+                menuLihatDataLaundry();
+                kembaliKeMenu();
             case 3:
-//                menuHapusDataLaundry();
-                break;
+                menuHapusDataLaundry();
+                kembaliKeMenu();
             default:
                 System.out.println("Pilihan Anda Salah!");
+                kembaliKeMenu();
         }
 
 
@@ -64,73 +75,39 @@ public class Main {
 
     public static void menuBuatDataLaundry() throws SQLException {
         try {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
             Transaksi laundry = new Transaksi();
             laundry.Transaksi();
         } catch (SQLException exception) {
-            exception.printStackTrace();
+            System.out.println("ERROR: " + exception.getMessage());
+            kembaliKeMenu();
         }
     }
 
     public static void menuLihatDataLaundry() throws SQLException {
-
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+        try {
+            riwayatLaundry daftarLaundry = new riwayatLaundry();
+            daftarLaundry.getRiwayatLaundry();
+        } catch (SQLException exception) {
+            System.out.println("ERROR: " + exception.getMessage());
+            kembaliKeMenu();
+        }
     }
-
 
     public static void menuHapusDataLaundry() throws SQLException {
-
-    }
-
-    public static void menuDaftarPegawai() throws SQLException {
-        ResultSet daftarPegawai = diLaundry.getDataPegawai();
-        System.out.println("DAFTAR DATA PEGAWAI DILAUNDRY");
-        while (daftarPegawai.next()) {
-            System.out.print(daftarPegawai.getInt("id_pegawai"));
-            System.out.print("       ");
-            System.out.print(daftarPegawai.getString("nama_pegawai"));
-            System.out.print("       ");
-            System.out.print(daftarPegawai.getString("username"));
-            System.out.print("       ");
-            System.out.print(daftarPegawai.getString("password"));
-            System.out.print("       ");
-            System.out.print(daftarPegawai.getString("email"));
-            System.out.print("       ");
-            System.out.print(daftarPegawai.getString("no_telp"));
-            System.out.println();
-        }
-    }
-
-
-    public static void menuTambahDataPegawai() {
-        Scanner scan = new Scanner(System.in);
-
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
         try {
-            System.out.println("Masukkan nama pegawai: ");
-            String namaPegawai = scan.nextLine();
-
-            System.out.println("Masukkan username: ");
-            String username = scan.nextLine();
-
-            System.out.println("Masukkan password: ");
-            String password = scan.nextLine();
-
-            System.out.println("Masukkan e-mail: ");
-            String email = scan.nextLine();
-
-            System.out.println("Masukkan nomor telepon: ");
-            String noTelp = scan.nextLine();
-
-            if (namaPegawai.isEmpty() || username.isEmpty() || password.isEmpty() || email.isEmpty() || noTelp.isEmpty()) {
-                throw new excepNote();
-            }
-
-            int hasil = diLaundry.tambahData(namaPegawai, username, password, email, noTelp);
-            if (hasil > 0){
-                System.out.println("Berhasil Menambahkan" + hasil + " baris!");
-            }
+            deleteLaundry hapusRiwayat = new deleteLaundry();
+            hapusRiwayat.hapusRiwayatLaundry();
         } catch (SQLException exception) {
-            System.out.println("Terdapat Kesalahan: " + exception.getMessage());
-        } catch (excepNote e){
-            System.out.println(e.getMessage());
+            System.out.println("ERROR: " + exception.getMessage());
+            kembaliKeMenu();
         }
+
     }
+
 }

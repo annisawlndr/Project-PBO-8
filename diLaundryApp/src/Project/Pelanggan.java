@@ -39,7 +39,7 @@ public class Pelanggan extends baseModel{
 
             return preparedStatement.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("ERROR: " + e.getMessage());
         }
         return 0;
     }
@@ -50,19 +50,22 @@ public class Pelanggan extends baseModel{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
 
-            System.out.println("\n+-----------------------+");
-            System.out.println("|     DATA PELANGGAN    |");
-            System.out.println("+-----------------------+");
+            System.out.println("\n+--------------------------+");
+            System.out.println("|       DATA PELANGGAN     |");
+            System.out.println("+--------------------------+");
+            System.out.println("No \t|ID \t Nama");
+            System.out.println("----------------------------");
 
+            int nomor = 0;
             while (rs.next()) {
                 int idPelanggan = rs.getInt("id_pelanggan");
                 String nama = rs.getString("nama_pelanggan");
-                String noTelp = rs.getString("no_telp_pelanggan");
+                nomor ++;
 
-                System.out.println(String.format("%d. %s   (%s)", idPelanggan, nama, noTelp));
+                System.out.println(String.format("%d \t|%d \t\t %s", nomor, idPelanggan, nama));
             }
         } catch (SQLException exception) {
-            exception.printStackTrace();
+            System.out.println("ERROR: " + exception.getMessage());
         }
 
     }

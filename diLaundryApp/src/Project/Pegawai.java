@@ -1,9 +1,9 @@
 package Project;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class Pegawai extends baseModel{
 
@@ -32,7 +32,7 @@ public class Pegawai extends baseModel{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
 
-            System.out.println("\n+-------------------+");
+            System.out.println("\n+---------------------+");
             System.out.println("|     DATA PEGAWAI    |");
             System.out.println("+---------------------+");
 
@@ -40,12 +40,12 @@ public class Pegawai extends baseModel{
                 int idPegawai = rs.getInt("id_pegawai");
                 String namaPegawai = rs.getString("nama_pegawai");
 
-                System.out.println(String.format("%d. %s", idPegawai, namaPegawai));
+                System.out.println(String.format("%d | %s", idPegawai, namaPegawai));
             }
 
             return preparedStatement.executeQuery();
         } catch (SQLException exception) {
-            exception.printStackTrace();
+            System.out.println("ERROR: " + exception.getMessage());
         }
         return null;
     }
