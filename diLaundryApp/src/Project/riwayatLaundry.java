@@ -18,7 +18,7 @@ public class riwayatLaundry extends baseModel{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             System.out.println("\n+----------------------------------------------------------------------------------------+");
-            System.out.println("|                            DAFTAR RIWAYAT DILAUNDRY                            |");
+            System.out.println("|                               DAFTAR RIWAYAT DILAUNDRY                                 |");
             System.out.println("+----------------------------------------------------------------------------------------+");
             System.out.println("No | ID Pelanggan \t|Pelanggan      \t\t\t|No Telepon \t\t|Berat \t\t |Tanggal");
             System.out.println("==========================================================================================");

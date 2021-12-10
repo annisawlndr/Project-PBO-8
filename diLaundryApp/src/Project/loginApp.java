@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class loginApp extends baseModel implements Login{
+import static Project.baseModel.connection;
+
+public class loginApp implements Login{
     Scanner input = new Scanner(System.in);
 
     public loginApp() throws SQLException {
@@ -24,11 +26,11 @@ public class loginApp extends baseModel implements Login{
                 String username = res.getString("username");
                 String pword = res.getString("password");
                 if (Objects.equals(username, userName) && Objects.equals(pword, password)) {
-                    System.out.println("Login Berhasil");
+                    System.out.println("MESSAGE: Login Berhasil");
                     menu.menudiLaundryApp();
                 }
             } else {
-                System.out.println("Username Atau Password Salah !");
+                System.out.println("MESSAGE: Username Atau Password Salah !");
                 menu.kembaliLogin();
             }
         } catch (SQLException e) {

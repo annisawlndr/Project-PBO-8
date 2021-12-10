@@ -4,7 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class Registrasi extends baseRegistrasi{
+import static Project.baseModel.connection;
+
+public class Registrasi extends baseRegistrasi {
     Scanner input = new Scanner(System.in);
 
     public Registrasi() throws SQLException {
@@ -45,7 +47,7 @@ public class Registrasi extends baseRegistrasi{
             }
 
             tambahPegawai(Nama, user, pass, email, telp);
-            System.out.println("\nRegistrasi Berhasil !");
+            System.out.println("\nMESSAGE: Registrasi Berhasil !");
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }

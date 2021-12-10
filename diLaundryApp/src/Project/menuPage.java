@@ -58,8 +58,6 @@ public class menuPage {
 
 
     public static void menudiLaundryApp() throws SQLException {
-        System.out.println("\033[H\033[2J");
-        System.out.flush();
         System.out.println("======================================================");
         System.out.println("-------- SELAMAT DATANG DI APLIKASI DILAUNDRY --------");
         System.out.println("======================================================");
@@ -70,7 +68,7 @@ public class menuPage {
                 System.out.println("------------------");
                 System.out.println("Anda telah Keluar!");
                 System.out.println("------------------");
-                System.exit(0);
+                kembaliLogin();
                 break;
             case 1:
                 menuBuatDataLaundry();
