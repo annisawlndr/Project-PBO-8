@@ -17,11 +17,11 @@ public class riwayatLaundry extends baseModel{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            System.out.println("\n+--------------------------------------------------------------------------------+");
+            System.out.println("\n+----------------------------------------------------------------------------------------+");
             System.out.println("|                            DAFTAR RIWAYAT DILAUNDRY                            |");
-            System.out.println("+--------------------------------------------------------------------------------+");
-            System.out.println("No | ID Pelanggan \t|Pelanggan \t\t\t|No Telepon \t\t|Berat \t\t |Tanggal");
-            System.out.println("==================================================================================");
+            System.out.println("+----------------------------------------------------------------------------------------+");
+            System.out.println("No | ID Pelanggan \t|Pelanggan      \t\t\t|No Telepon \t\t|Berat \t\t |Tanggal");
+            System.out.println("==========================================================================================");
 
             int n = 1;
             while (resultSet.next()) {
@@ -33,7 +33,7 @@ public class riwayatLaundry extends baseModel{
                 int nomor = n ++;
 
                 System.out.println(String.format("%d  | \t%s \t\t\t|%s \t\t\t\t|%s \t\t|%.2f kg \t |%tD", nomor,idPelanggan, namaPelanggan, noTelpPelanggan, beratLaundry, date));
-                System.out.println("----------------------------------------------------------------------------------");
+                System.out.println("-----------------------------------------------------------------------------------------");
             }
         } catch (SQLException exception) {
             System.out.println("ERROR: " + exception.getMessage());

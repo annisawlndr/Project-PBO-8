@@ -1,6 +1,6 @@
 package Project;
 
-import Exception.excepNote;
+import Exception.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,13 +16,13 @@ public class Pelanggan extends baseModel{
         Scanner scanner = new Scanner(System.in);
         try {
             System.out.println("Masukkan nama pelanggan: ");
-            String namaPelanggan = scanner.next();
+            String namaPelanggan = scanner.nextLine();
 
             System.out.println("Masukkan nomor telepon pelanggan: ");
-            String noTelepon = scanner.next();
+            String noTelepon = scanner.nextLine();
 
             System.out.println("Masukkan alamat pelanggan: ");
-            String alamat = scanner.next();
+            String alamat = scanner.nextLine();
 
             if (namaPelanggan.isEmpty() || noTelepon.isEmpty() || alamat.isEmpty()) {
                 throw new excepNote();
@@ -50,11 +50,11 @@ public class Pelanggan extends baseModel{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
 
-            System.out.println("\n+--------------------------+");
-            System.out.println("|       DATA PELANGGAN     |");
-            System.out.println("+--------------------------+");
-            System.out.println("No \t|ID \t Nama");
-            System.out.println("----------------------------");
+            System.out.println("\n+--------------------------------+");
+            System.out.println("|          DATA PELANGGAN        |");
+            System.out.println("+--------------------------------+");
+            System.out.println("No \t|ID     \t Nama");
+            System.out.println("---------------------------------");
 
             int nomor = 0;
             while (rs.next()) {
