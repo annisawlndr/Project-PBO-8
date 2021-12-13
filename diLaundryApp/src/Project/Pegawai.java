@@ -10,21 +10,6 @@ public class Pegawai extends baseModel{
         super();
     }
 
-    public static int tambahData(String namaPegawai, String username, String password, String email, String noTelp) throws SQLException {
-        String query = "INSERT INTO pegawai" +
-                "(nama_pegawai, username, password, email, no_telp)" +
-                "VALUES (?, ?, ?, ?, ?)";
-
-        PreparedStatement preparedStatement = connection.prepareStatement(query);
-        preparedStatement.setString(1, namaPegawai);
-        preparedStatement.setString(2, username);
-        preparedStatement.setString(3, password);
-        preparedStatement.setString(4, email);
-        preparedStatement.setString(5, noTelp);
-        
-        return preparedStatement.executeUpdate();
-    }
-
     public static ResultSet getDataPegawai() throws SQLException {
         String query = "SELECT * FROM pegawai";
         try {
