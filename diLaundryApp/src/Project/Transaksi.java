@@ -129,7 +129,7 @@ public class Transaksi extends baseModel{
 
             System.out.println(String.format("\t\t\t\t\t\t%s \n %s, %s, kec. %s, kab. %s \n\t\t\t\t\tTelp. %s \n\t\t%s", namaToko, alamatToko, desaToko, kecToko, kabToko, noTelpToko, slogan));
             System.out.println("=========================================================");
-            System.out.println(String.format(">> Nama Pelanggan : %s \n>> Nomor Telepon  : %s \n---------------------------------------------------------", namaPlgn, noTelpPlgn));
+            System.out.println(String.format(">> Nama Pelanggan : %s \n>> Nomor Telepon  : %s \n>> Tanggal        : %s\n---------------------------------------------------------", namaPlgn, noTelpPlgn, localDate));
             System.out.println("DETAIL LAUNDRY \n>> Jenis Laundry : " + namaJenis + "\n>> Berat  \t\t : " + berat + " kg    \t\t\tx\t\tRp"+ rupiah.format(hargaJenis));
             System.out.println("\nTOTAL    :  \t\t\t\t\t\t\t\t\tRp" + rupiah.format(totalPembayaran) + "\nBAYAR    :  \t\t\t\t\t\t\t\t\tRp" + rupiah.format(uangMasuk) + "\nKEMBALI  :  \t\t\t\t\t\t\t\t\tRp" + rupiah.format(uangKembali));
             System.out.println(String.format(">> Kasir : %s", namaPegawai));

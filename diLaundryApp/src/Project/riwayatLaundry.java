@@ -33,7 +33,7 @@ public class riwayatLaundry extends baseModel{
                 int nomor = n ++;
 
                 System.out.println(String.format("%d  | \t%s \t\t\t|%s \t\t\t\t|%s \t\t|%.2f kg \t |%tD", nomor,idPelanggan, namaPelanggan, noTelpPelanggan, beratLaundry, date));
-                System.out.println("-----------------------------------------------------------------------------------------");
+                System.out.println("------------------------------------------------------------------------------------------");
             }
         } catch (SQLException exception) {
             System.out.println("ERROR: " + exception.getMessage());
