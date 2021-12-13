@@ -87,8 +87,6 @@ public class menuPage {
 
     public static void menuBuatDataLaundry () throws SQLException {
         try {
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
             Transaksi laundry = new Transaksi();
             laundry.Transaksi();
         } catch (SQLException exception) {
@@ -98,8 +96,6 @@ public class menuPage {
     }
 
     public static void menuLihatDataLaundry () throws SQLException {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
         try {
             riwayatLaundry daftarLaundry = new riwayatLaundry();
             daftarLaundry.getRiwayatLaundry();
@@ -110,8 +106,6 @@ public class menuPage {
     }
 
     public static void menuHapusDataLaundry () throws SQLException {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
         try {
             deleteLaundry hapusRiwayat = new deleteLaundry();
             hapusRiwayat.hapusRiwayatLaundry();
